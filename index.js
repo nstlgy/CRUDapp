@@ -1,13 +1,19 @@
 const express = require("express");
-const app = express();
-const PORT = 4000;
 const path = require("path");
 
-// views folder and ejs setup
+// App Configuration
+const app = express();
+const PORT = 4000;
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// View Engine Setup
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
-// Our fake database:
+// Fake Database
 let comments = [
   {
     username: "Todd",
@@ -27,18 +33,31 @@ let comments = [
   },
 ];
 
+// Routes
 app.get("/", (req, res) => {
   res.render("home");
 });
 
+// Comment Routes
 app.get("/comments", (req, res) => {
   res.render("comments/index", { comments });
 });
 
+app.get("/comments/new", (req, res) => {
+  res.render("comments/new");
+});
+
+app.post("/comments", (req, res) => {
+  console.log(req.body);
+  res.send("works");
+});
+
+// Server
 app.listen(PORT, () => {
   console.log(`Running application on PORT ${PORT}`);
 });
 
+// Route Documentation
 // GET /comments - list all comments
 // POST /comments - Create a new comment
 // GET /comments/:id - Get one comment (using ID)

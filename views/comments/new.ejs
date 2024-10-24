@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Comment</title>
+    <style>
+        form {
+            margin: 20px;
+            padding: 20px;
+            max-width: 500px;
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Make a new comment</h1>
+    <form action="/comments" method="POST">
+        <div>
+          <label for="username">Username: </label>
+          <input type="text" id="username" name="username" placeholder="username" required>
+        </div>
+        <div>
+          <label for="comment">Comment: </label>
+          <textarea id="comment" placeholder="Write your comment" name="comment" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/comments">Back to Index</a>
+</body>
+</html>
